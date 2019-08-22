@@ -46,7 +46,7 @@ defaults:
     path: ''
     type: posts
   values:
-    permalink: "/blog/:title/"
+    permalink: "/posts/:title/"
     layout: post
     author:
     tags:
@@ -55,12 +55,15 @@ defaults:
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 gems:
 - jekyll/tagging
 
 tag_page_layout: tag
 tag_page_dir: tags
+paginate: 6
+paginate_path: "/page:num/"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

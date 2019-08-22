@@ -1,15 +1,23 @@
 ---
 layout: sidebar
 ---
-
-<div class="container mt-3">
-  <h1><i class="fad fa-tags"></i> Tagged {{ page.tag }}</h1>
-  {% assign posts = site.tags[page.tag] %}
-  <ul>
+<div class="col col-lg-9">
+  <div class="container mt-3">
+    <h1><i class="fad fa-tags"></i> Tagged {{ page.tag }}</h1>
+    {% assign posts = site.tags[page.tag] %}
     {% for post in posts %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+      {% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+      {% if post_year != current_year %}
+          {% unless forloop.first %}</ul>{% endunless %}
+          <h5 class="mt-5">{{ post_year }}</h5>
+          <ul class="post-list">
+          {% capture current_year %}{{ post_year }}{% endcapture %}
+      {% endif %}
+
+          <li>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+              <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          </li>
+  {% endfor %}
+  </div>
 </div>
