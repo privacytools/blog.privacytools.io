@@ -29,6 +29,9 @@
   {% else %}
     <meta content="{{ site.description | strip_html }}" property="og:description">
   {% endif %}
+  {% if page.cover %}
+    <meta content="{{ site.url }}{{ page.cover }}" property="og:image">
+  {% endif %}
   {% if page.url %}
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
   {% endif %}
