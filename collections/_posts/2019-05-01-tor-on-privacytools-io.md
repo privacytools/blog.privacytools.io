@@ -10,7 +10,7 @@ tags:
 
 We're excited to announce the launch of Tor connectivity to the privacytools.io homepage, and we hope to get Tor working on the rest of our services as soon as possible.
 
-**Update 5/6:** Some people asked me for a more detailed post and guide on how to set this kind of thing up on their own servers, so [I went ahead and did that](https://write.privacytools.io/jonah/securing-services-with-tor-and-alt-svc). Hopefully if you're a service operator or you just like that kidn of stuff it'll be helpful to you!<!--more-->
+**Update 5/6:** Some people asked me for a more detailed post and guide on how to set this kind of thing up on their own servers, so [I went ahead and did that](https://write.privacytools.io/jonah/securing-services-with-tor-and-alt-svc). Hopefully if you're a service operator or you just like that kind of stuff it'll be helpful to you!<!--more-->
 
 ## The Homepage
 
