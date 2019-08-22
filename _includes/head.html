@@ -14,23 +14,29 @@
   <meta content="{{ site.title }}" property="og:site_name">
   {% if page.title %}
     <meta content="{{ page.title }}" property="og:title">
+    <meta name="twitter:title" content="{{ page.title }}">
   {% else %}
     <meta content="{{ site.title }}" property="og:title">
   {% endif %}
   {% if page.title %}
     <meta content="article" property="og:type">
+    <meta name="twitter:site" content="@privacytoolsIO">
   {% else %}
     <meta content="website" property="og:type">
   {% endif %}
   {% if page.description %}
     <meta content="{{ page.description | strip_html }}" property="og:description">
+    <meta name="twitter:description" content="{{ page.description | strip_html }}">
   {% elsif page.excerpt %}
     <meta content="{{ page.excerpt | truncatewords: 36 | strip_html }}" property="og:description">
+    <meta name="twitter:description" content="{{ page.excerpt | truncatewords: 36 | strip_html }}">
   {% else %}
     <meta content="{{ site.description | strip_html }}" property="og:description">
   {% endif %}
   {% if page.cover %}
     <meta content="{{ site.url }}{{ page.cover }}" property="og:image">
+    <meta name="twitter:image" content="{{ site.url }}{{ page.cover }}">
+    <meta name="twitter:card" content="summary_large_image">
   {% endif %}
   {% if page.url %}
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
@@ -39,6 +45,7 @@
     <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
     {% assign author = site.authors | where: 'title', page.author | first %}
     <meta content="{{ site.url }}{{ author.url }}" property="article:author">
+    {% if author.twitter %}<meta name="twitter:creator" content="{{ author.twitter }}">{% endif %}
   {% endif %}
   {% if page.categories %}
     {% for category in page.categories limit:1 %}
