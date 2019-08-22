@@ -21,55 +21,55 @@ layout: sidebar
     </div>
   </div>
 </div>-->
-<div class="col col-lg-9 mb-5">
-{% for post in paginator.posts %}
-<div class="card mb-3">
-  {% if post.cover %}
-  <img class="card-img-top" src="{{ post.cover }}" alt="Card image cap">
-  {% endif %}
-  <div class="card-body">
-    <h2><a href="{{ post.url }}" class="text-reset">{{ post.title }}</a></h2>
-    {% assign author = site.authors | where: 'title', post.author | first %}
-    <div class="row justify-content-between mb-2 text-muted">
-      <div class="col">
-        <h6 class="card-subtitle">Author: <a href="{{ author.url }}">{{ author.title }}</a> <i class="fal fa-minus fa-fw"></i> {{ post.date | date: "%B %-d" }}</h6>
+<div class="col-12 col-lg-9">
+  {% for post in paginator.posts %}
+  <div class="card mb-3">
+    {% if post.cover %}
+    <img class="card-img-top" src="{{ post.cover }}" alt="Card image cap">
+    {% endif %}
+    <div class="card-body">
+      <h2><a href="{{ post.url }}" class="text-reset">{{ post.title }}</a></h2>
+      {% assign author = site.authors | where: 'title', post.author | first %}
+      <div class="row justify-content-between mb-2 text-muted">
+        <div class="col">
+          <h6 class="card-subtitle">Author: <a href="{{ author.url }}">{{ author.title }}</a> <i class="fal fa-minus fa-fw"></i> {{ post.date | date: "%B %-d" }}</h6>
+        </div>
+      </div>
+      <div class="card-text">
+        {{ post.excerpt | strip_html | truncatewords: 56, "...</p>" }} <a href="{{ post.url }}">Read more...</a>
       </div>
     </div>
-    <div class="card-text">
-      {{ post.excerpt | strip_html | truncatewords: 56, "...</p>" }} <a href="{{ post.url }}">Read more...</a>
-    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">{% for tag in post.tags limit:5 %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}.html">{{ tag }}</a></span> {% endfor %}</li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item">{% for tag in post.tags limit:5 %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}.html">{{ tag }}</a></span> {% endfor %}</li>
-  </ul>
-</div>
-{% endfor %}
-<!-- Pagination links -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    {% if paginator.previous_page %}
-    <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a></li>
-    {% else %}
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    {% endif %}
-    {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">{{ page }} <span class="sr-only">(current)</span></a>
-    </li>
-    {% else %}
-    <li class="page-item"><a class="page-link" href="{% if page == 1 %}{% else %}/page{{ page }}{% endif %}/">{{ page }}</a></li>
-    {% endif %}
-    {% endfor %}
-    {% if paginator.next_page %}
-    <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path }}">Next</a></li>
-    {% else %}
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
+  {% endfor %}
+  <!-- Pagination links -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination mb-5">
+      {% if paginator.previous_page %}
+      <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a></li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      {% endif %}
+      {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{ page }} <span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="{% if page == 1 %}{% else %}/page{{ page }}{% endif %}/">{{ page }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if paginator.next_page %}
+      <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path }}">Next</a></li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 </div>
