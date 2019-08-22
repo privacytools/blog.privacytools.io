@@ -56,4 +56,19 @@ layout: sidebar
     <li class="list-group-item">{% for tag in page.tags %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}.html">{{ tag }}</a></span> {% endfor %}</li>
     </ul>
   </div>
+  <div class="card mb-5">
+    <div class="card-body">
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.privacytools.io/',
+                           discourseEmbedUrl: '{% if page.canonical %}{{ page.canonical }}{% else %}{{ site.url }}{{ page.url }}{% endif %}' };
+
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  </div>
 </div>
