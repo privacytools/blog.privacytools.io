@@ -62,7 +62,7 @@ layout: sidebar
     {% assign editor = site.authors | where: 'title', page.editor | first %}
       <li class="list-group-item"><i class="fas fa-user-check fa-fw"></i> Article Editor: <a href="{{ author.url }}">{{ editor.title }}</a></li>
     {% endif %}
-    <li class="list-group-item">{% for tag in page.tags %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}">{{ tag }}</a></span> {% endfor %}</li>
+    <li class="list-group-item">{% for tag in page.tags %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}.html">{{ tag }}</a></span> {% endfor %}</li>
     </ul>
   </div>
 </div>
