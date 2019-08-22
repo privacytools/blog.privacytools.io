@@ -17,7 +17,7 @@ Shadowsocks has the benefit of being far more lightweight than OpenVPN, and it i
 
 Please note that **like any VPN**, Outline/Shadowsocks cannot provide nearly the same degree of anonymity as projects like Tor. The primary use-case of Outline and VPNs in general is to keep your traffic hidden from malicious Internet Service Providers and nation-wide mass surveillance. It's a great solution for protecting your data on public wifi networks, but if you want to stay hidden from attackers targeting *you*, there's better tools for the job elsewhere.
 
-Outline is developed by Jigsaw, which is a subsidiary of Alphabet Inc (Google). It is important to note that Jigsaw or Google cannot see your internet traffic when using Outline, because you will be installing the actual Outline Server on your own machine, not Google's. Outline is completely open source and was audited in [2017](https://s3.amazonaws.com/outline-vpn/static_downloads/ros-report.pdf) by Radically Open Security and in [2018](https://s3.amazonaws.com/outline-vpn/static_downloads/cure53-report.pdf) by Cure53, and both security firms supported Jigsaw's security claims. For more information on the data Jigsaw is able to collect when using Outline, see their [article on data collection](https://support.getoutline.org/s/article/Data-collection).
+Outline is developed by Jigsaw, which is a subsidiary of Alphabet Inc (Google). It is important to note that neither Jigsaw nor Google can see your internet traffic when using Outline, because you will be installing the actual Outline Server on your own machine, not Google's. Outline is completely open source and was audited in [2017](https://s3.amazonaws.com/outline-vpn/static_downloads/ros-report.pdf) by Radically Open Security and in [2018](https://s3.amazonaws.com/outline-vpn/static_downloads/cure53-report.pdf) by Cure53, and both security firms supported Jigsaw's security claims. For more information on the data Jigsaw is able to collect when using Outline, see their [article on data collection](https://support.getoutline.org/s/article/Data-collection).
 
 ### Prerequisites
 
@@ -45,10 +45,11 @@ For this guide we are not going to use an automatic provider in Outline Manager,
 
 ### Step 3 — Configure Your Server
 
-First, we need to install `curl`. Connect to your server via SSH and enter the following commands:
+First, we need to update our system and install `curl`. Connect to your server via SSH and enter the following commands:
 
 ```
 sudo apt update
+sudo apt upgrade
 sudo apt install curl
 ```
 
@@ -56,7 +57,9 @@ Next open Outline Manager on your local machine and you should be given 4 option
 
 ![](/assets/img/2019-08-22-outline-server-setup.png){: .w-100}
 
-Outline will give you a string to paste. Connect to your server over SSH and paste the code in the Outline Manager box into the Terminal. The process will take a minute or two and will ask you a couple questions. You can just press enter to accept the default configuration whenever it asks.
+Outline will give you a string to paste. More technical users can [view the script](https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh) that line runs in a browser to validate exactly what is being run and installed on your server, but we have examined the script and have seen no alarming commands.
+
+Connect to your server over SSH and paste the code from above in the Outline Manager box into the Terminal. The process will take a minute or two and will ask you a couple questions. You can just press enter to accept the default configuration whenever it asks.
 
 After it completes, it will give you a long line starting with `{"apiUrl"` (depending on your Terminal's color support it will appear as green). Copy that line, and paste it in the second box back in Outline Manager. Then, click "Done".
 
