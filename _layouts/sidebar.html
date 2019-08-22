@@ -12,7 +12,7 @@ layout: default
         {% capture tags %}
           {% for tag in site.tags %}
             <li class="list-group-item" data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}">
-               <a href="/{{ site.tag_page_dir }}/{{ tag[0] | slugify: 'pretty' }}"><i class="fas fa-hashtag fa-fw"></i> {{ tag[0] }}</a> <span class="badge badge-primary ml-1">{{ tag[1].size }}</span>
+               <a href="/{{ site.tag_page_dir }}/{{ tag[0] | slugify: 'pretty' }}.html"><i class="fas fa-hashtag fa-fw"></i> {{ tag[0] }}</a> <span class="badge badge-primary ml-1">{{ tag[1].size }}</span>
             </li>
           {% endfor %}
         {% endcapture %}
