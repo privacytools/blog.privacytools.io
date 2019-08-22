@@ -23,15 +23,44 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.privacytools.io" # the base hostname & protocol for your site, e.g. http://example.com
 sass:
     sass_dir: _sass
-
+excerpt_separator: <!--more-->
 collections_dir: collections
 collections:
-  - authors
+  authors:
+    title: Authors
+    output: true
+
+defaults:
+- scope:
+    path: ''
+    type: authors
+  values:
+    permalink: "/authors/:title/"
+    layout: author
+    position: Contributor
+    mastodon:
+    twitter:
+    website:
+    github:
+- scope:
+    path: ''
+    type: posts
+  values:
+    permalink: "/blog/:title/"
+    layout: post
+    author:
+    tags:
 
 # Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
+
+gems:
+- jekyll/tagging
+
+tag_page_layout: tag
+tag_page_dir: tags
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

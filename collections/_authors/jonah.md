@@ -1,7 +1,10 @@
 ---
-name: Jonah
+title: Jonah
 position:
-  - Editor
   - Team Member
-mastodon: "https://social.privacytools.io/@jonah"
+  - Editor
+mastodon: "@jonah@social.privacytools.io"
+twitter: "@JonahAragon"
+website: "https://jonaharagon.com"
+github: "@JonahAragon"
 ---

@@ -1,0 +1,15 @@
+---
+layout: sidebar
+---
+
+<div class="container mt-3">
+  <h1><i class="fad fa-tags"></i> Tagged {{ page.tag }}</h1>
+  {% assign posts = site.tags[page.tag] %}
+  <ul>
+    {% for post in posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

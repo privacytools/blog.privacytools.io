@@ -1,0 +1,51 @@
+---
+layout: sidebar
+---
+
+<div class="card">
+  {% if page.cover %}
+  <img class="card-img-top" src="{{ page.cover }}" alt="Card image cap">
+  {% endif %}
+  <div class="card-body">
+    <h1 class="card-title display-4">{{ page.title }}</h1>
+    {% assign author = site.authors | where: 'title', page.author | first %}
+    <div class="row justify-content-between mb-5 text-muted">
+      <div class="col">
+        <h5 class="card-subtitle">Author: <a href="{{ author.url }}">{{ author.title }}</a></h5>
+        {% for position in author.position %}
+        {% if position == "Team Member" %}
+        <span class="badge badge-primary"><i class="fas fa-crown fa-fw"></i> {{ position }}</span>
+        {% elsif position == "Editor" %}
+        <span class="badge badge-info"><i class="fas fa-shield-alt fa-fw"></i> {{ position }}</span>
+        {% elsif position == "Author" %}
+        <span class="badge badge-secondary"><i class="fas fa-shield-check fa-fw"></i> {{ position }}</span>
+        {% else %}
+        <span class="badge badge-secondary">{{ position }}</span>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% if author.mastodon or author.twitter or author.github %}
+      <div class="col text-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          {% if author.mastodon %}
+          {% assign mastodon = author.mastodon | split: "@" %}
+          <a class="btn btn-outline-dark" href="https://{{ mastodon[2] }}/@{{ mastodon[1] }}"><i class="fab fa-mastodon fa-fw"></i></a>
+          {% endif %}
+          {% if author.twitter %}<a class="btn btn-outline-dark" href="https://twitter.com/{{ author.twitter | downcase | escape_once | strip | remove: "@" }}"><i class="fab fa-twitter fa-fw"></i></a>{% endif %}
+          {% if author.github %}<a class="btn btn-outline-dark" href="https://github.com/{{ author.github | downcase | escape_once | strip | remove: "@" }}"><i class="fab fa-github fa-fw"></i></a>{% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="card-text">
+      {{ content }}
+    </div>
+  </div>
+  <ul class="list-group list-group-flush">
+  {% if page.editor %}
+  {% assign editor = site.authors | where: 'title', page.editor | first %}
+    <li class="list-group-item"><i class="fas fa-user-check fa-fw"></i> Article Editor: <a href="{{ author.url }}">{{ editor.title }}</a></li>
+  {% endif %}
+  <li class="list-group-item">{% for tag in page.tags %}<span class="badge badge-pill badge-dark"><i class="fas fa-hashtag"></i> <a class="text-light" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}">{{ tag }}</a></span> {% endfor %}</li>
+  </ul>
+</div>
