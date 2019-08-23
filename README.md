@@ -1,3 +1,13 @@
+# blog.privacytools.io
+
+## Building
+
+1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+2. Run `gem install bundler` to install [bundler](https://bundler.io/).
+3. Run `bundle install` to install the required dependencies.
+4. Run `bundle exec jekyll build` to build the website. The output can be found in the `_site` directory.
+5. Run `bundle exec jekyll serve` for a live preview of the website.
+
 ## License
 
 The contents of this repo are made available under two different licenses:
