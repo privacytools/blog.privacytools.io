@@ -25,7 +25,9 @@ layout: sidebar
   {% for post in paginator.posts %}
   <div class="card mb-3">
     {% if post.cover %}
+    <a href="{{ post.url }}">
     <img class="card-img-top" src="{{ post.cover }}" alt="Card image cap">
+    </a>
     {% endif %}
     <div class="card-body">
       <h2><a href="{{ post.url }}" class="text-reset">{{ post.title }}</a></h2>
