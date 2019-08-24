@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="privacytoolsIO">
-  {% if page.title %}<title>{{ page.title }} | blog.privacytools.io</title>{% else %}<title>Home | blog.privacytools.io</title>{% endif %}
+  {% if page.title %}<title>{{ page.title }} | blog.privacytools.io</title>{% elsif page.url contains '/tags/' %}<title>Tagged: {{ page.tag }} | blog.privacytools.io</title>{% else %}<title>Home | blog.privacytools.io</title>{% endif %}
   {% if page.canonical %}
   <link rel="canonical" href="{{ page.canonical }}" />
   {% elsif page.url %}
