@@ -92,3 +92,5 @@ stamp = 'sdns://AgUAAAAAAAAABzEuMS4xLjEAGm1vemlsbGEuY2xvdWRmbGFyZS1kbnMuY29tCi9k
 ![](/assets/img/2019-08-24-dnscloak/config-editor-cf-moz.jpeg){: .w-50}
 
 ![](/assets/img/2019-08-24-dnscloak/dnscloak-cf-moz.jpeg){: .w-50}
+
+### Summary
