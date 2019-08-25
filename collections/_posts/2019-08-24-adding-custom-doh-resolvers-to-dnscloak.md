@@ -14,7 +14,7 @@ This guide will show how to use DNSCloak to connect to your favorite public reso
 
 ### Adding a Custom Resolver
 
-You'll notice DNSCloak provides a "Config Editor":
+DNSCloak provides a "Config Editor" which allows you to modify various aspects of the program, add custom servers, etc:
 
 ![](/assets/img/2019-08-24-dnscloak/config-editor.jpeg){: .w-50}
 
