@@ -10,9 +10,15 @@ tags:
   - ios
 ---
 
-**[DNSCloak](https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351)** is an [open-source](https://github.com/s-s/dnscloak) DNSCrypt and DNS over HTTPS (DoH) client for iOS, which gives users the ability to encrypt their DNS requests through the use of an on-device VPN profile. While highly configurable, its user interface can be unintuitive and doesn't easily allow users to add custom DoH resolvers apart from the default ["public-resolvers" list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md) that the DNSCrypt project provides.
+**[DNSCloak](https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351)** is an [open-source](https://github.com/s-s/dnscloak) DNSCrypt and DNS over HTTPS (DoH) client for iOS, which gives users the ability to encrypt their DNS requests through the use of an on-device VPN profile.
+
+While highly configurable, its user interface can be unintuitive and doesn't easily allow users to add custom DoH resolvers apart from the default ["public-resolvers" list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md) that the DNSCrypt project provides.
 
 This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
+
+While there is a lot of nuance to DNSCrypt and DoH, it's important to understand that these two DNS protocols essentially achieve the same goals: provide users with the ability to encrypt all DNS traffic to the users' desired [upstream provider(s)](https://www.privacytools.io/providers/dns/#icanndns), while preventing [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), [spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and eavesdropping by 3rd parties.
+
+And unlike Android 9 which has [native support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not come with any native support. Thus, iOS users must rely on apps like DNSCloak to benefit from encrypted DNS.
 
 ### Adding a Custom Resolver
 
