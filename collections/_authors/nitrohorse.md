@@ -2,6 +2,7 @@
 title: nitrohorse
 position:
   - Team Member
+  - Author
 mastodon: "@andreas@nitro.horse"
 website: "https://nitrohorse.com"
 github: "@nitrohorse"

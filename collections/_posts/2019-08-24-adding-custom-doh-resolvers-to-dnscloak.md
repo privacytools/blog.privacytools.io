@@ -6,10 +6,11 @@ layout: post
 tags:
   - guides
   - dns
+  - dnscrypt
   - ios
 ---
 
-**[DNSCloak](https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351)** is an [open-source](https://github.com/s-s/dnscloak) DNSCrypt and DNS over HTTPS (DoH) client for iOS; giving users the ability to encrypt their DNS requests. While highly configurable, its user interface can be unintuitive and doesn't easily allow users to add custom DoH resolvers apart from the default ["public-resolvers" list that DNSCrypt provides](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md).
+**[DNSCloak](https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351)** is an [open-source](https://github.com/s-s/dnscloak) DNSCrypt and DNS over HTTPS (DoH) client for iOS, which gives users the ability to encrypt their DNS requests through the use of an on-device VPN profile. While highly configurable, its user interface can be unintuitive and doesn't easily allow users to add custom DoH resolvers apart from the default ["public-resolvers" list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md) that the DNSCrypt project provides.
 
 This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
 
@@ -19,24 +20,26 @@ DNSCloak provides a "Config Editor" which allows you to modify various aspects o
 
 ![](/assets/img/2019-08-24-dnscloak/config-editor.jpeg){: .w-50}
 
-We can learn about the various configuration options from the [example config file](https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml) in dnscrypt-proxy's code repository. If you scroll all the way to the bottom, you'll find a `[static.'myserver']` section along with a `stamp` property. This stamp is for adding the [DNS stamp](https://dnscrypt.info/stamps-specifications) of your resolver.
+You can learn more about the various configuration options from the [example configuration file](https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml) in dnscrypt-proxy's code repository. But, if you scroll all the way to the bottom you'll find a `[static.'myserver']` section along with a `stamp` property. This stamp is for adding the [DNS stamp](https://dnscrypt.info/stamps-specifications) of your resolver.
 
-> Server stamps encode all the parameters required to connect to a secure DNS server as a single string. Think about stamps as QR code, but for DNS.
+According to the DNSCrypt project, DNS stamps encode all the parameters required to connect to an encrypted DNS server as a single string. You can think about stamps as QR code, but for DNS.
 
-At the time of writing this post, CZ.NIC's DoH resolver is the only one [PrivacyTools.io suggests](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp on their website, making adoption a bit more difficult. But thankfully, we can create a DNS stamp ourselves.
+### Generating a Stamp
 
-DNSCrypt hosts a [DNS stamp calculator](https://dnscrypt.info/stamps/) (which you can also [download, compile, and run offline](https://github.com/jedisct1/vue-dnsstamp)) that we can fill out with the info CZ.NIC provides on their webpage to generate our stamp.
+Some providers will provide you with a DNS stamp pre-made for you. If your provider does this, great! You can skip ahead to the next section. At the time of writing this post, CZ.NIC's DoH resolver is the only provider [privacytools.io suggests](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp on their website, making adoption a bit more difficult. Thankfully however, we can create a DNS stamp ourselves.
 
-We'll need three things about the DoH resolver:
+To generate a DNS stamp, DNSCrypt hosts a [DNS stamp calculator](https://dnscrypt.info/stamps/) (which you can also [download, compile, and run offline](https://github.com/jedisct1/vue-dnsstamp)) that we can fill out with the information from our DNS provider. We'll be using CZ.NIC's information as an example to generate our stamp.
+
+We will need to know three things about the DoH resolver you choose:
 1. IP address
 2. Host name
 3. Path
 
-Navigate to [CZ.NIC's webpage](https://www.nic.cz/odvr/) and scroll down to "How to turn on DNS-over-HTTPS (DoH)" to note the URL (https://odvr.nic.cz/doh).
+Browse to [CZ.NIC's webpage](https://www.nic.cz/odvr/)—there is an English language option at the top of the page—and scroll down to "How to turn on DNS-over-HTTPS (DoH)" and note the URL (in this case, `https://odvr.nic.cz/doh`).
 
 ![](/assets/img/2019-08-24-dnscloak/cz-nic-doh.png){: .w-100}
 
-Next, scroll up to the setup sections for either Windows, macOS, or Linux and copy one of the IPv4 addresses of the DoH resolver (`193.17.47.1` or `185.43.135.1`).
+Next, find one of the IPv4 addresses of the DoH resolver in any of the Windows, macOS, or Linux setup sections, and copy one of them (in this case, `193.17.47.1` or `185.43.135.1`).
 
 ![](/assets/img/2019-08-24-dnscloak/cz-nic-ips.png){: .w-50}
 
@@ -49,7 +52,9 @@ Now we can paste what we've gathered into the stamp calculator:
 
 We'll find that the DNS stamp is `sdns://AgMAAAAAAAAACzE5My4xNy40Ny4xAAtvZHZyLm5pYy5jegQvZG9o`.
 
-Let's copy and paste our new configuration into DNSCloak's Config Editor at the bottom:
+### Adding Resolvers to DNSCloak
+
+Now that we have a DNS stamp generated, we can copy and paste our new configuration into the bottom of DNSCloak's Config Editor, like so:
 
 ```
 [static.'CZ.NIC-193.17.47.1']
@@ -58,11 +63,11 @@ stamp = 'sdns://AgMAAAAAAAAACzE5My4xNy40Ny4xAAtvZHZyLm5pYy5jegQvZG9o'
 
 ![](/assets/img/2019-08-24-dnscloak/config-editor-cz-nic.jpeg){: .w-50}
 
-Save by selecting the checkmark icon on the top right, and now we can use our new configuration:
+Select the checkmark icon in the top right corner to save your configuration, and it should be good to go!
 
 ![](/assets/img/2019-08-24-dnscloak/dnscloak-cz-nic.jpeg){: .w-50}
 
-Connect, and let's finally validate DNSCloak is working as expected by visiting [DNSLeakTest.com](https://dnsleaktest.com/):
+Get connected, and we can finally validate DNSCloak is working as expected by visiting [DNSLeakTest.com](https://dnsleaktest.com/):
 
 ![](/assets/img/2019-08-24-dnscloak/dnsleaktest-cz-nic.jpeg){: .w-100}
 
@@ -77,7 +82,7 @@ We can [generate a stamp](https://dnscrypt.info/stamps/) with this information:
 
 ![](/assets/img/2019-08-24-dnscloak/cloudflare-mozilla-stamp.png){: .w-100}
 
-You can now paste this into DNSCloak's Config Editor and start using the resolver.
+You can now paste the following stamp we generated into DNSCloak's Config Editor and start using the resolver.
 
 ```
 [static.'Cloudflare Resolver for Firefox']
