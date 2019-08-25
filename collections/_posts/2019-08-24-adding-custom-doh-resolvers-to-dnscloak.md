@@ -1,6 +1,7 @@
 ---
 title: Adding Custom DNS over HTTPS Resolvers to DNSCloak
 author: nitrohorse
+editor: Jonah
 layout: post
 tags:
   - guides
