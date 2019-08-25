@@ -11,7 +11,7 @@ tags:
 
 **[DNSCloak](https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351)** is an [open-source](https://github.com/s-s/dnscloak) DNSCrypt and DNS over HTTPS (DoH) client for iOS; giving users the ability to encrypt their DNS requests. While highly configurable, its user interface can be unintuitive and doesn't easily allow users to add custom DoH resolvers apart from the default ["public-resolvers" list that DNSCrypt provides](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md).
 
-This guide will show how to use DNSCloak to connect to your favorite public resolver that supports DNSCrypt or DoH.
+This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
 
 ### Adding a Custom Resolver
 
