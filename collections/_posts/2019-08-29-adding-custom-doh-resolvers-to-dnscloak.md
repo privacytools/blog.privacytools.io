@@ -100,3 +100,7 @@ stamp = 'sdns://AgUAAAAAAAAABzEuMS4xLjEAGm1vemlsbGEuY2xvdWRmbGFyZS1kbnMuY29tCi9k
 ![](/assets/img/2019-08-24-dnscloak/dnscloak-cf-moz.jpeg){: .w-50}
 
 ### Summary
+
+Keep in mind that encrypted DNS won't hide the _host name_ (for example, `mozilla.cloudflare-dns.com`) of the sites you visit from your ISP due to [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications)*. So if you're looking for anonymity, you should us the [Tor Browser](https://www.torproject.org/) instead. But if you're looking for additional security and increased privacy from 3rd parties, encrypted DNS is a good place to start.
+
+`*` At the time of this post, _encrypted_ SNI is [available for testing](https://blog.mozilla.org/security/2018/10/18/encrypted-sni-comes-to-firefox-nightly/) in Firefox Nightly, and will hopefully become integrated into other browsers in the near future.
