@@ -14,7 +14,7 @@ tags:
 
 While highly configurable, its user interface can be unintuitive to less tech-savvy users and doesn't easily allow users to use custom DoH resolvers, apart from the default ["public-resolvers" list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v2/public-resolvers.md) that the DNSCrypt project provides.
 
-Before diving in, I'd like to mention that while there is a lot of nuance to DNSCrypt and DoH, it's important to understand that these two DNS protocols essentially achieve the same goals: provide users with the ability to encrypt all DNS traffic to the users' desired [upstream provider(s)](https://www.privacytools.io/providers/dns/#icanndns), while preventing [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), [spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and eavesdropping by 3rd parties.
+Before diving in, it's important to understand that while there is a lot of nuance to DNSCrypt and DoH, these two DNS protocols essentially achieve the same goals: They both provide users with the ability to encrypt all DNS traffic to the users' desired [upstream provider(s)](https://www.privacytools.io/providers/dns/#icanndns), while preventing [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), [spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and eavesdropping by 3rd parties.
 
 The development of these DNS protocols is exciting, and unlike Android 9 which has [native support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not come with any native encrypted DNS support. Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
 
