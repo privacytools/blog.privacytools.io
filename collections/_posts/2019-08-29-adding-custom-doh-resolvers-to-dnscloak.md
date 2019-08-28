@@ -16,19 +16,17 @@ While highly configurable, its user interface can be unintuitive to less tech-sa
 
 Before diving in, it's important to understand that while there is a lot of nuance to DNSCrypt and DoH, these two DNS protocols essentially achieve the same goals: They both provide users with the ability to encrypt all DNS traffic to the users' desired [upstream provider(s)](https://www.privacytools.io/providers/dns/#icanndns), while preventing [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), [spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and eavesdropping by 3rd parties.
 
-The development of these DNS protocols is exciting, and unlike Android 9 which has [native support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not come with any native encrypted DNS support. Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
+The development of these DNS protocols is exciting, and unlike Android 9 which has [built-in support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not come with any built-in encrypted DNS support. Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
 
 This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
 
 ### Adding a Custom Resolver
 
-DNSCloak provides a "Config Editor" which allows you to modify various aspects of the program, add custom servers, etc:
+DNSCloak provides a "Config Editor" which allows you to "override or add any [dnscrypt-proxy option](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)."
 
 ![](/assets/img/2019-08-24-dnscloak/config-editor.jpeg){: .w-50}
 
-You can learn more about the various configuration options from the [example configuration file](https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml) in dnscrypt-proxy's code repository. But, if you scroll all the way to the bottom you'll find a `[static.'myserver']` section along with a `stamp` property. This stamp is for adding the [DNS stamp](https://dnscrypt.info/stamps-specifications) of your resolver.
-
-According to the DNSCrypt project, DNS stamps encode all the parameters required to connect to an encrypted DNS server as a single string. You can think about stamps as QR code, but for DNS.
+You can learn more about the various configuration options from the [example configuration file](https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml) in dnscrypt-proxy's code repository. But, if you scroll all the way to the bottom you'll find a `[static.'myserver']` section along with a `stamp` property. This stamp is for adding your resolver's [DNS stamp](https://dnscrypt.info/stamps-specifications), an encoded string that contains all the required information needed to connect to an encrypted DNS resolver. You can think about stamps as QR code, but for DNS.
 
 ### Generating a Stamp
 
@@ -45,7 +43,7 @@ Browse to [CZ.NIC's webpage](https://www.nic.cz/odvr/)—there is an English lan
 
 ![](/assets/img/2019-08-24-dnscloak/cz-nic-doh.png){: .w-100}
 
-Next, find one of the IPv4 addresses of the DoH resolver in any of the Windows, macOS, or Linux setup sections, and copy one of them (in this case, `193.17.47.1` or `185.43.135.1`).
+Next, find the IPv4 addresses of the DoH resolver in any of the Windows, macOS, or Linux setup sections, and copy one of them (in this case, `193.17.47.1` or `185.43.135.1`).
 
 ![](/assets/img/2019-08-24-dnscloak/cz-nic-ips.png){: .w-50}
 
@@ -101,6 +99,6 @@ stamp = 'sdns://AgUAAAAAAAAABzEuMS4xLjEAGm1vemlsbGEuY2xvdWRmbGFyZS1kbnMuY29tCi9k
 
 ### Summary
 
-Keep in mind that encrypted DNS won't hide the _host name_ (for example, `mozilla.cloudflare-dns.com`) of the sites you visit from your ISP due to [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications)*. So if you're looking for anonymity, you should us the [Tor Browser](https://www.torproject.org/) instead. But if you're looking for additional security and increased privacy from 3rd parties, encrypted DNS is a good place to start.
+Keep in mind that encrypted DNS won't hide the _host name_ (for example, `blog.privacytools.io`) of the sites you visit from your ISP due to [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications)*. If you're looking for anonymity, you should us the [Tor Browser](https://www.torproject.org/) instead. But if you're looking for additional security and increased privacy from 3rd parties, encrypted DNS is a good place to start.
 
-`*` At the time of this post, _encrypted_ SNI is [available for testing](https://blog.mozilla.org/security/2018/10/18/encrypted-sni-comes-to-firefox-nightly/) in Firefox Nightly, and will hopefully become integrated into other browsers in the near future.
+&#42; At the time of this post, _encrypted_ SNI is [available for testing](https://blog.mozilla.org/security/2018/10/18/encrypted-sni-comes-to-firefox-nightly/) in Firefox Nightly, and will hopefully become integrated into other browsers in the near future.
