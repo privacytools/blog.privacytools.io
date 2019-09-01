@@ -16,7 +16,7 @@ While highly configurable, its user interface can be unintuitive to less tech-sa
 
 Before diving in, it's important to understand that while there is a lot of nuance to DNSCrypt and DoH, these two DNS protocols essentially achieve the same goals: They both provide users with the ability to encrypt all DNS traffic to the users' desired [upstream provider(s)](https://www.privacytools.io/providers/dns/#icanndns), while preventing [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), [spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and eavesdropping by 3rd parties.
 
-The development of these DNS protocols is exciting, and unlike Android 9 which has [built-in support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not allow users to enable encrypted DNS as easily [but may in the future](https://dnsdisco.com/iOS-dns-proxy-post.html). Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
+The development of these DNS protocols is exciting, and unlike Android 9 which has [built-in support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not allow users to enable encrypted DNS as easily ([but may in the future](https://dnsdisco.com/iOS-dns-proxy-post.html)). Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
 
 This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
 
@@ -30,7 +30,7 @@ You can learn more about the various configuration options from the [example con
 
 ### Generating a Stamp
 
-Some providers will provide you with a DNS stamp pre-made for you. If your provider does this, great! You can skip ahead to the next section. At the time of writing this post, CZ.NIC's DoH resolver is the only provider [privacytools.io suggests](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp on their website, making adoption a bit more difficult. Thankfully however, we can create a DNS stamp ourselves.
+Some providers will provide you with a DNS stamp pre-made for you. If your provider does this, great! You can skip ahead to the next section. At the time of writing this post, CZ.NIC's DoH resolver is the only provider [listed on privacytools.io](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp on their website, making adoption a bit more difficult. Thankfully however, we can create a DNS stamp ourselves.
 
 To generate a DNS stamp, DNSCrypt hosts a [DNS stamp calculator](https://dnscrypt.info/stamps/) (which you can also [download, compile, and run offline](https://github.com/jedisct1/vue-dnsstamp)) that we can fill out with the information from our DNS provider. We'll be using CZ.NIC's information as an example to generate our stamp.
 
