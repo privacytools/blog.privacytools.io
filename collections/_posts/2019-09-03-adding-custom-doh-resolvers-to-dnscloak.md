@@ -99,6 +99,10 @@ stamp = 'sdns://AgUAAAAAAAAABzEuMS4xLjEAGm1vemlsbGEuY2xvdWRmbGFyZS1kbnMuY29tCi9k
 
 ### Summary
 
-Keep in mind that encrypted DNS won't hide the _host name_ (for example, `blog.privacytools.io`) of the sites you visit from your ISP due to [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications)*. If you're looking for anonymity, you should us the [Tor Browser](https://www.torproject.org/) instead. But if you're looking for additional security and increased privacy from 3rd parties, encrypted DNS is a good place to start.
+Keep in mind that encrypted DNS _won't hide the host name_ (for example, `blog.privacytools.io`) of the sites you visit from your ISP due to [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications)*.
 
-&#42; At the time of this post, _encrypted_ SNI is [available for testing](https://blog.mozilla.org/security/2018/10/18/encrypted-sni-comes-to-firefox-nightly/) in Firefox Nightly, and will hopefully become integrated into other browsers in the near future.
+If you're looking for anonymity, you can use [Tor Project's](https://www.torproject.org) [Onion Browser](https://onionbrowser.com/) (but keep in mind [its limitations](https://github.com/OnionBrowser/OnionBrowser/wiki/Traffic-that-leaks-outside-of-Tor-due-to-iOS-limitations)). On the other hand, if you want to hide your browsing history from your ISP, you can look into [self-hosting a VPN](https://blog.privacytools.io/posts/self-hosting-a-shadowsocks-vpn-with-outline/) or using [WireGuard](https://apps.apple.com/us/app/wireguard/id1441195209?ls=1) (if supported) or [Passepartout](https://passepartoutvpn.app/) with a [VPN provider](https://www.privacytools.io/providers/vpn/) you can trust.
+
+But for additional security and increased privacy from 3rd parties, encrypted DNS is a great place to start.
+
+&#42; At the time of this post, _encrypted_ SNI is [available for testing](https://blog.mozilla.org/security/2018/10/18/encrypted-sni-comes-to-firefox-nightly/) in only in Firefox Nightly, and will hopefully become integrated into other browsers and platforms in the near future.
