@@ -18,7 +18,7 @@ Before diving in, it's important to understand that while there is a lot of nuan
 
 The development of these DNS protocols is exciting, and unlike Android 9 which has [built-in support for DNS over TLS](https://support.google.com/android/answer/9089903) (another protocol with similar goals), iOS unfortunately does not allow users to enable encrypted DNS as easily ([but may in the future](https://dnsdisco.com/iOS-dns-proxy-post.html)). Thus, DNSCloak fills the gap for iOS users to start benefitting from these protocols now.
 
-This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DNSCrypt or DoH.
+This guide will walk you through setting up DNSCloak to connect to any public resolver that supports either DoH.
 
 ### Adding a Custom Resolver
 
