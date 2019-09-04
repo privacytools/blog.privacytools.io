@@ -3,6 +3,7 @@ title: Adding Custom DNS over HTTPS Resolvers to DNSCloak
 author: nitrohorse
 editor: Jonah
 layout: post
+cover: /assets/img/2019-09-03-dnscloak/cover.jpg
 tags:
   - guides
   - dns
@@ -24,7 +25,7 @@ This guide will walk you through setting up DNSCloak to connect to any public re
 
 DNSCloak provides a "Config Editor" which allows you to "override or add any [dnscrypt-proxy option](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)."
 
-![](/assets/img/2019-08-24-dnscloak/config-editor.jpeg){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/config-editor.jpeg){: .w-50}
 
 You can learn more about the various configuration options from the [example configuration file](https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml) in dnscrypt-proxy's code repository. But, if you scroll all the way to the bottom you'll find a `[static.'myserver']` section along with a `stamp` property. This stamp is for adding your resolver's [DNS stamp](https://dnscrypt.info/stamps-specifications), an encoded string that contains all the required information needed to connect to an encrypted DNS resolver. You can think about stamps as QR code, but for DNS.
 
@@ -41,18 +42,18 @@ We will need to know three things about the DoH resolver you choose:
 
 Browse to [CZ.NIC's webpage](https://www.nic.cz/odvr/)—there is an English language option at the top of the page—and scroll down to "How to turn on DNS-over-HTTPS (DoH)" and note the URL (in this case, `https://odvr.nic.cz/doh`).
 
-![](/assets/img/2019-08-24-dnscloak/cz-nic-doh.png){: .w-100}
+![](/assets/img/2019-09-03-dnscloak/cz-nic-doh.png){: .w-100}
 
 Next, find the IPv4 addresses of the DoH resolver in any of the Windows, macOS, or Linux setup sections, and copy one of them (in this case, `193.17.47.1` or `185.43.135.1`).
 
-![](/assets/img/2019-08-24-dnscloak/cz-nic-ips.png){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/cz-nic-ips.png){: .w-50}
 
 Now we can paste what we've gathered into the stamp calculator:
 - IP address: `193.17.47.1`
 - Host name: `odvr.nic.cz`
 - Path: `/doh`
 
-![](/assets/img/2019-08-24-dnscloak/cz-nic-stamp.png){: .w-100}
+![](/assets/img/2019-09-03-dnscloak/cz-nic-stamp.png){: .w-100}
 
 We'll find that the DNS stamp is `sdns://AgMAAAAAAAAACzE5My4xNy40Ny4xAAtvZHZyLm5pYy5jegQvZG9o`.
 
@@ -65,15 +66,15 @@ Now that we have a DNS stamp generated, we can copy and paste our new configurat
 stamp = 'sdns://AgMAAAAAAAAACzE5My4xNy40Ny4xAAtvZHZyLm5pYy5jegQvZG9o'
 ```
 
-![](/assets/img/2019-08-24-dnscloak/config-editor-cz-nic.jpeg){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/config-editor-cz-nic.jpeg){: .w-50}
 
 Select the checkmark icon in the top right corner to save your configuration, and it should be good to go!
 
-![](/assets/img/2019-08-24-dnscloak/dnscloak-cz-nic.jpeg){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/dnscloak-cz-nic.jpeg){: .w-50}
 
 Get connected, and we can finally validate DNSCloak is working as expected by visiting [DNSLeakTest.com](https://dnsleaktest.com/):
 
-![](/assets/img/2019-08-24-dnscloak/dnsleaktest-cz-nic.jpeg){: .w-100}
+![](/assets/img/2019-09-03-dnscloak/dnsleaktest-cz-nic.jpeg){: .w-100}
 
 ### Adding Cloudflare's Resolver for Firefox
 
@@ -84,7 +85,7 @@ We can [generate a stamp](https://dnscrypt.info/stamps/) with this information:
 - Host name: `mozilla.cloudflare-dns.com`
 - Path: `/dns-query`
 
-![](/assets/img/2019-08-24-dnscloak/cloudflare-mozilla-stamp.png){: .w-100}
+![](/assets/img/2019-09-03-dnscloak/cloudflare-mozilla-stamp.png){: .w-100}
 
 You can now paste the following stamp we generated into DNSCloak's Config Editor and start using the resolver.
 
@@ -93,9 +94,9 @@ You can now paste the following stamp we generated into DNSCloak's Config Editor
 stamp = 'sdns://AgUAAAAAAAAABzEuMS4xLjEAGm1vemlsbGEuY2xvdWRmbGFyZS1kbnMuY29tCi9kbnMtcXVlcnk'
 ```
 
-![](/assets/img/2019-08-24-dnscloak/config-editor-cf-moz.jpeg){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/config-editor-cf-moz.jpeg){: .w-50}
 
-![](/assets/img/2019-08-24-dnscloak/dnscloak-cf-moz.jpeg){: .w-50}
+![](/assets/img/2019-09-03-dnscloak/dnscloak-cf-moz.jpeg){: .w-50}
 
 ### Summary
 
