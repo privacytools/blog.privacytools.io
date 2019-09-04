@@ -30,7 +30,7 @@ You can learn more about the various configuration options from the [example con
 
 ### Generating a Stamp
 
-Some providers will provide you with a DNS stamp pre-made for you. If your provider does this, great! You can skip ahead to the next section. At the time of writing this post, CZ.NIC's DoH resolver is the only provider [listed on privacytools.io](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp on their website, making adoption a bit more difficult. Thankfully however, we can create a DNS stamp ourselves.
+Some providers will provide you with a DNS stamp pre-made for you. If your provider does this, great! You can skip ahead to the next section. At the time of writing this post, CZ.NIC is the only provider [listed on privacytools.io](https://www.privacytools.io/providers/dns/#icanndns) that doesn't provide their users with a DNS stamp for their DoH resolver on their website, making adoption a bit more difficult. Thankfully however, we can create a DNS stamp ourselves.
 
 To generate a DNS stamp, DNSCrypt hosts a [DNS stamp calculator](https://dnscrypt.info/stamps/) (which you can also [download, compile, and run offline](https://github.com/jedisct1/vue-dnsstamp)) that we can fill out with the information from our DNS provider. We'll be using CZ.NIC's information as an example to generate our stamp.
 
